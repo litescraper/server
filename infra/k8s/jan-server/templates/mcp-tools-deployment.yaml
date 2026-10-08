@@ -47,6 +47,8 @@ spec:
           value: "http://{{ include "jan-server.fullname" . }}-vector-store:{{ .Values.vectorStore.service.port }}"
         - name: SANDBOX_FUSION_URL
           value: "http://{{ include "jan-server.fullname" . }}-sandboxfusion:{{ .Values.sandboxfusion.service.port }}"
+        - name: SERPER_BASE_URL
+          value: {{ .Values.mcpTools.env.SERPER_BASE_URL | default "https://google.serper.dev" | quote }}
         - name: SERPER_API_KEY
           valueFrom:
             secretKeyRef:

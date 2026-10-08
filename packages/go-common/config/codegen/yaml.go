@@ -130,6 +130,7 @@ func buildDefaultConfig() *config.Config {
 				LogLevel:               "info",
 				LogFormat:              "json",
 				SearchEngine:           "serper",
+				SerperBaseURL:          "https://google.serper.dev",
 				SerperAPIKey:           "", // From secrets
 				SerperEnabled:          true,
 				ExaAPIKey:              "", // From secrets

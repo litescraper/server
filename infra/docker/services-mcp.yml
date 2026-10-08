@@ -18,6 +18,7 @@ services:
       # Search Configuration
       MCP_SEARCH_ENGINE: ${MCP_SEARCH_ENGINE:-serper}
       SERPER_API_KEY: ${SERPER_API_KEY:-}
+      SERPER_BASE_URL: ${SERPER_BASE_URL:-https://google.serper.dev}
 
       # Circuit Breaker Configuration
       SERPER_CB_FAILURE_THRESHOLD: ${SERPER_CB_FAILURE_THRESHOLD:-10}

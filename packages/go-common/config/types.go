@@ -252,6 +252,8 @@ type MCPToolsConfig struct {
 	// Search engine to use
 	SearchEngine string `yaml:"search_engine" json:"search_engine" env:"SEARCH_ENGINE" envDefault:"serper" jsonschema:"enum=serper,enum=exa,enum=tavily,enum=searxng" description:"Search engine to use (deprecated; fallback chain uses *_ENABLED flags)"`
 
+	// Serper-compatible API base URL
+	SerperBaseURL string `yaml:"serper_base_url" json:"serper_base_url" env:"SERPER_BASE_URL" envDefault:"https://google.serper.dev" description:"Serper-compatible API base URL"`
 	// Serper API key (from secrets)
 	SerperAPIKey string `yaml:"serper_api_key,omitempty" json:"serper_api_key,omitempty" env:"SERPER_API_KEY" description:"Serper API key (from secret provider)"`
 

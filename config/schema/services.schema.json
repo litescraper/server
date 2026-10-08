@@ -267,6 +267,9 @@
             "searxng"
           ]
         },
+        "serper_base_url": {
+          "type": "string"
+        },
         "serper_api_key": {
           "type": "string"
         },
@@ -326,6 +329,7 @@
         "log_level",
         "log_format",
         "search_engine",
+        "serper_base_url",
         "serper_enabled",
         "exa_enabled",
         "exa_search_endpoint",

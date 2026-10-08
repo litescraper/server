@@ -109,6 +109,7 @@ func buildDefaultConfigForLoader() *Config {
 				LogFormat:              "json",
 				SearchEngine:           "serper",
 				SerperEnabled:          true,
+				SerperBaseURL:          "https://google.serper.dev",
 				SerperAPIKey:           "",
 				ExaAPIKey:              "",
 				ExaEnabled:             false,

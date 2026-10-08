@@ -18,6 +18,7 @@ type Config struct {
 
 	// Search Configuration
 	SerperAPIKey       string   `env:"SERPER_API_KEY"`
+	SerperBaseURL      string   `env:"SERPER_BASE_URL" envDefault:"https://google.serper.dev"`
 	SerperEnabled      bool     `env:"SERPER_ENABLED" envDefault:"true"`
 	SearchEngine       string   `env:"MCP_SEARCH_ENGINE" envDefault:"serper"`
 	SearxngURL         string   `env:"SEARXNG_URL" envDefault:"http://searxng:8080"`

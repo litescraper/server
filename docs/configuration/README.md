@@ -341,3 +341,9 @@ See working examples in:
 ---
 
 **Need help?** See [precedence.md](precedence.md) or check existing service implementations for patterns.
+
+## Serper-compatible endpoints
+
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others).
+
+Set `SERPER_BASE_URL` (or `services.mcp_tools.serper_base_url` in the configuration file) to the provider base URL. Search and image search append their existing routes; authentication continues using `SERPER_API_KEY`. The default is `https://google.serper.dev`.

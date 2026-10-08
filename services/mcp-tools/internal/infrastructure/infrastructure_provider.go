@@ -56,6 +56,7 @@ func ProvideSearchClient(cfg *config.Config) search.SearchClient {
 	return searchclient.NewSearchClient(searchclient.ClientConfig{
 		Engine:             searchclient.Engine(cfg.SearchEngine),
 		SerperAPIKey:       cfg.SerperAPIKey,
+		SerperBaseURL:      cfg.SerperBaseURL,
 		SerperEnabled:      cfg.SerperEnabled,
 		SearxngURL:         cfg.SearxngURL,
 		SearxngEnabled:     cfg.SearxngEnabled,

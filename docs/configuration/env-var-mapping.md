@@ -115,6 +115,7 @@ container overrides.
 | `MCP_SEARCH_ENGINE`            | string   | `serper`                        |       |
 | `SERPER_ENABLED`               | bool     | `true`                          |       |
 | `SERPER_API_KEY`               | string   | (secret)                        |       |
+| `SERPER_BASE_URL`              | string   | `https://google.serper.dev`      | Serper-compatible API base URL |
 | `EXA_ENABLED`                  | bool     | `false`                         |       |
 | `EXA_API_KEY`                  | string   | (secret)                        |       |
 | `EXA_SEARCH_ENDPOINT`          | string   | `https://api.exa.ai/search`     |       |

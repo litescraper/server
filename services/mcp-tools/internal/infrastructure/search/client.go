@@ -18,8 +18,7 @@ import (
 )
 
 const (
-	serperSearchEndpoint         = "https://google.serper.dev/search"
-	serperImageSearchEndpoint    = "https://google.serper.dev/images"
+	serperBaseURLDefault         = "https://google.serper.dev"
 	serperScrapeEndpoint         = "https://scrape.serper.dev"
 	exaSearchEndpointDefault     = "https://api.exa.ai/search"
 	exaContentsEndpointDefault   = "https://api.exa.ai/contents"
@@ -46,6 +45,7 @@ const (
 type ClientConfig struct {
 	Engine         Engine
 	SerperAPIKey   string
+	SerperBaseURL  string
 	SerperEnabled  bool
 	SearxngURL     string
 	SearxngEnabled bool
@@ -109,6 +109,11 @@ func NewSearchClient(cfg ClientConfig) *SearchClient {
 		engine = EngineSerper
 	}
 	cfg.Engine = engine
+
+	if strings.TrimSpace(cfg.SerperBaseURL) == "" {
+		cfg.SerperBaseURL = serperBaseURLDefault
+	}
+	cfg.SerperBaseURL = strings.TrimRight(cfg.SerperBaseURL, "/")
 
 	if strings.TrimSpace(cfg.ExaEndpoint) == "" {
 		cfg.ExaEndpoint = exaSearchEndpointDefault
@@ -512,10 +517,10 @@ func (c *SearchClient) searchViaSerper(ctx context.Context, query domainsearch.S
 			SetHeader("Content-Type", "application/json").
 			SetBody(body).
 			SetResult(&res).
-			Post(serperSearchEndpoint)
+			Post(c.cfg.SerperBaseURL + "/search")
 
 		if err != nil {
-			log.Error().Err(err).Str("service", "serper").Str("endpoint", serperSearchEndpoint).Msg("failed to query Serper search API")
+			log.Error().Err(err).Str("service", "serper").Str("endpoint", c.cfg.SerperBaseURL+"/search").Msg("failed to query Serper search API")
 			return nil, fmt.Errorf("failed to query Serper search API: %w", err)
 		}
 
@@ -1478,10 +1483,10 @@ func (c *SearchClient) imageSearchViaSerper(ctx context.Context, query domainsea
 			SetHeader("Content-Type", "application/json").
 			SetBody(body).
 			SetResult(&rawResp).
-			Post(serperImageSearchEndpoint)
+			Post(c.cfg.SerperBaseURL + "/images")
 
 		if err != nil {
-			log.Error().Err(err).Str("service", "serper").Str("endpoint", serperImageSearchEndpoint).Msg("failed to query Serper image search API")
+			log.Error().Err(err).Str("service", "serper").Str("endpoint", c.cfg.SerperBaseURL+"/images").Msg("failed to query Serper image search API")
 			return nil, fmt.Errorf("failed to query Serper image search API: %w", err)
 		}
 

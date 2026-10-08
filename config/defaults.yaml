@@ -81,6 +81,7 @@ services:
     log_format: json
     search_engine: serper
     serper_enabled: true
+    serper_base_url: https://google.serper.dev
     exa_enabled: false
     exa_search_endpoint: https://api.exa.ai/search
     exa_timeout: 15s
